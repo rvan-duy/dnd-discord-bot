@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "discord.js": "^14.17.3"
+  },
+  "name": "dnd-discord-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:rvan-duy/dnd-discord-bot.git",
+  "author": "Ruben van Duyneveldt <ruben.vanduyneveldt@stedin.net>",
+  "license": "MIT"
+}
