@@ -1,11 +1,16 @@
 {
   "dependencies": {
-    "discord.js": "^14.17.3"
+    "discord.js": "^14.17.3",
+    "dotenv": "^16.4.7"
   },
   "name": "dnd-discord-bot",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:rvan-duy/dnd-discord-bot.git",
-  "author": "Ruben van Duyneveldt <ruben.vanduyneveldt@stedin.net>",
-  "license": "MIT"
+  "author": "Ruben van Duyneveldt",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "update": "node update-commands.js"
+  }
 }
