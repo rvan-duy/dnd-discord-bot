@@ -1,4 +1,5 @@
 import { SlashCommandBuilder } from 'discord.js';
+import { characterConfig} from '../character-config.js';
 
 export const data = new SlashCommandBuilder()
   .setName('attack-hit')
@@ -16,9 +17,7 @@ export const data = new SlashCommandBuilder()
       .setRequired(false)
   );
 
-// Hardcoded values
-const strengthMod = 4;
-const proficiencyBonus = 2;
+const { strengthMod, proficiencyBonus } = characterConfig;
 
 const rollD20 = () => Math.floor(Math.random() * 20) + 1;
 const calculateTotal = (roll, strengthMod, proficiencyBonus) => roll + strengthMod + proficiencyBonus;
