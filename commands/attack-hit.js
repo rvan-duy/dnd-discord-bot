@@ -17,10 +17,10 @@ export const data = new SlashCommandBuilder()
       .setRequired(false)
   );
 
-const { strengthMod, proficiencyBonus } = characterConfig;
-
 const rollD20 = () => Math.floor(Math.random() * 20) + 1;
 const calculateTotal = (roll, strengthMod, proficiencyBonus) => roll + strengthMod + proficiencyBonus;
+
+const { strengthMod, proficiencyBonus } = characterConfig;
 
 const buildResponse = (rolls, strengthMod, proficiencyBonus, total, advantage, disadvantage) => {
   let response = '';
@@ -62,14 +62,14 @@ export const execute = async interaction => {
   } else if (disadvantage) {
     rolls = [rollD20(), rollD20()];
     if (rolls[0] === 1 && rolls[1] === 1) {
-      await interaction.reply('Both rolls were a 1! Oops... Remember sailors get to reroll ;)');
+      await interaction.reply('Both rolls were a 1! Oops...');
       return;
     }
     total = calculateTotal(Math.min(...rolls), strengthMod, proficiencyBonus);
   } else {
     rolls = [rollD20()];
     if (rolls[0] === 1) {
-      await interaction.reply('Natural 1! Oops... Remember sailors get to reroll ;)');
+      await interaction.reply('Natural 1! Oops...');
       return;
     }
     total = calculateTotal(rolls[0], strengthMod, proficiencyBonus);
