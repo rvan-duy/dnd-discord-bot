@@ -2,8 +2,15 @@ import { SlashCommandBuilder } from 'discord.js';
 
 export const data = new SlashCommandBuilder()
   .setName('ping')
-  .setDescription('Replies with Pong!');
+  .setDescription('pong! 🎉')
 
-export const execute = async interaction => {
-  await interaction.reply('Pong!');
-};
+export async function onMessage(interaction) {
+  try {
+    if (!interaction.isValid()) return;
+    await interaction.reply('pong! 🎉');
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+export const execute = onMessage;
