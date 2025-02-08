@@ -1,6 +1,6 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { characterConfig } from '../character-config.js';
-import { con } from '../utils/database-setup.js';
+import con from '../utils/database-setup.js';
 
 // database with boat fund
 // logs fro adding /removing
