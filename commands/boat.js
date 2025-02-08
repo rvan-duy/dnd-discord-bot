@@ -4,16 +4,16 @@ import con from '../utils/database-setup.js';
 // logs fro adding /removing
 
 export const data = new SlashCommandBuilder()
-  .setName('boat')
+  .setName('boat-fund')
   .setDescription('Manage your boat fund during a D&D session!')
   .addSubcommand(subcommand =>
     subcommand
-      .setName('fund check')
+      .setName('check')
       .setDescription('Check how high the boat fund is.')
   )
   .addSubcommand(subcommand =>
     subcommand
-      .setName('fund add')
+      .setName('add')
       .setDescription('Add gold to the boat fund.')
       .addIntegerOption(option =>
         option
@@ -24,7 +24,7 @@ export const data = new SlashCommandBuilder()
   )
   .addSubcommand(subcommand =>
     subcommand
-      .setName('fund remove')
+      .setName('remove')
       .setDescription('Remove gold from the boat fund.')
       .addIntegerOption(option =>
         option
