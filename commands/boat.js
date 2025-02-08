@@ -21,10 +21,9 @@ export const execute = async interaction => {
 
   switch (subcommand) {
     case 'check': {
-      con.query(`SELECT * FROM boat WHERE id = 1`, (err, rows) => {
-        console.log(rows);
+      con.query(`SELECT * FROM boat WHERE id = 1`, async (err, rows) => {
+        await interaction.reply(`You have ${rows[0].fund} gold in your boat fund.`);
       });
-      await interaction.reply(`You have ${boatFund} gold in your boat fund.`);
       break;
     }
     default: {
