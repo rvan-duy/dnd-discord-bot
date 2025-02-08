@@ -1,5 +1,6 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { characterConfig } from '../character-config.js';
+import { con } from '../utils/database-setup.js';
 
 // database with boat fund
 // logs fro adding /removing
@@ -20,6 +21,9 @@ export const execute = async interaction => {
 
   switch (subcommand) {
     case 'check': {
+      con.query(`SELECT * FROM boat WHERE id = 1`, (err, rows) => {
+        console.log(rows);
+      });
       await interaction.reply(`You have ${boatFund} gold in your boat fund.`);
       break;
     }
