@@ -1,7 +1,7 @@
 import { Client as DiscordClient, Events, GatewayIntentBits } from 'discord.js';
 import 'dotenv/config';
 import { registerCommands } from './utils/command-loader.js';
-import { Client as PostgresClient } from 'pg';
+import { Pool } from 'pg';
 
 const client = new DiscordClient({ intents: [GatewayIntentBits.Guilds] });
 
@@ -9,7 +9,7 @@ client.on(Events.ClientReady, readyClient => {
   console.log(`Logged in as ${readyClient.user.tag}!`);
 
   // setup postgressql connection with DATABASE_URL
-  const pool = new PostgresClient({
+  const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: {
       rejectUnauthorized: false
