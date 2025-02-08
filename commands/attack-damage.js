@@ -11,8 +11,7 @@ export const data = new SlashCommandBuilder()
       .setRequired(true)
   );
 
-const { strengthMod } = characterConfig;
-const rageBonus = 2; // Rage bonus
+const { strengthMod, rageBonus } = characterConfig;
 
 // Function to roll damage and provide a breakdown
 const rollDamage = (diceSize) => {
@@ -45,7 +44,7 @@ export const execute = async interaction => {
     case 'claws':
       const clawsRoll = rollDamage(6); // 1d6
       damage = clawsRoll.damage;
-      reply = `You clawed the enemy!${clawsRoll.breakdown}${clawsRoll.rerollMessage}\nRemember clawing can be done twice.`;
+      reply = `You clawed the enemy!${clawsRoll.breakdown}${clawsRoll.rerollMessage}\nRemember clawing can be done twice.\nP.S. Crits make the target disadvantaged on their next attack.`;
       break;
     case 'bite':
       const biteRoll = rollDamage(8); // 1d8
