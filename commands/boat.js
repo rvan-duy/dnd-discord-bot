@@ -8,12 +8,12 @@ export const data = new SlashCommandBuilder()
   .setDescription('Manage your boat fund during a D&D session!')
   .addSubcommand(subcommand =>
     subcommand
-      .setName('check')
+      .setName('fund check')
       .setDescription('Check how high the boat fund is.')
   )
   .addSubcommand(subcommand =>
     subcommand
-      .setName('add')
+      .setName('fund add')
       .setDescription('Add gold to the boat fund.')
       .addIntegerOption(option =>
         option
@@ -24,7 +24,7 @@ export const data = new SlashCommandBuilder()
   )
   .addSubcommand(subcommand =>
     subcommand
-      .setName('remove')
+      .setName('fund remove')
       .setDescription('Remove gold from the boat fund.')
       .addIntegerOption(option =>
         option
@@ -38,32 +38,30 @@ export const execute = async interaction => {
   const subcommand = interaction.options.getSubcommand();
 
   switch (subcommand) {
-    case 'check': {
+    case 'fund check': {
       con.query(`SELECT * FROM boat WHERE id = 1`, async (err, rows) => {
         await interaction.reply(`You have ${rows.rows[0].fund} gold in your boat fund.`);
       });
       break;
     }
-    case 'add': {
+    case 'fund add': {
       const amount = interaction.options.getInteger('amount');
 
       con.query(`SELECT * FROM boat WHERE id = 1`, (err, rows) => {
         const newAmount = rows.rows[0].fund + amount;
         con.query(`UPDATE boat SET fund = ${newAmount} WHERE id = 1`, async err => {
-          await interaction.reply(`Added ${amount} gold to the boat fund.
-            The new total is ${newAmount} gold.`);
+          await interaction.reply(`Added ${amount} gold to the boat fund.\nThe new total is ${newAmount} gold.`);
         });
       });
       break;
     }
-    case 'remove': {
+    case 'fund remove': {
       const amount = interaction.options.getInteger('amount');
 
       con.query(`SELECT * FROM boat WHERE id = 1`, (err, rows) => {
         const newAmount = rows.rows[0].fund - amount;
         con.query(`UPDATE boat SET fund = ${newAmount} WHERE id = 1`, async err => {
-          await interaction.reply(`Removed ${amount} gold from the boat fund.
-            The new total is ${newAmount} gold.`);
+          await interaction.reply(`Removed ${amount} gold from the boat fund.\nThe new total is ${newAmount} gold.`);
         });
       });
       break;
