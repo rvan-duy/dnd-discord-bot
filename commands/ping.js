@@ -6,7 +6,6 @@ export const data = new SlashCommandBuilder()
 
 export async function onMessage(interaction) {
   try {
-    if (!interaction.isValid()) return;
     await interaction.reply('pong! 🎉');
   } catch (error) {
     console.error('Error:', error);
