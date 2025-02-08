@@ -38,13 +38,13 @@ export const execute = async interaction => {
   const subcommand = interaction.options.getSubcommand();
 
   switch (subcommand) {
-    case 'fund check': {
+    case 'check': {
       con.query(`SELECT * FROM boat WHERE id = 1`, async (err, rows) => {
         await interaction.reply(`You have ${rows.rows[0].fund} gold in your boat fund.`);
       });
       break;
     }
-    case 'fund add': {
+    case 'add': {
       const amount = interaction.options.getInteger('amount');
 
       con.query(`SELECT * FROM boat WHERE id = 1`, (err, rows) => {
@@ -55,7 +55,7 @@ export const execute = async interaction => {
       });
       break;
     }
-    case 'fund remove': {
+    case 'remove': {
       const amount = interaction.options.getInteger('amount');
 
       con.query(`SELECT * FROM boat WHERE id = 1`, (err, rows) => {
