@@ -1,8 +1,9 @@
 import { Client as DiscordClient, Events, GatewayIntentBits } from 'discord.js';
 import 'dotenv/config';
 import { registerCommands } from './utils/command-loader.js';
-import { Pool } from 'pg';
+import pkg from 'pg';
 
+const { Pool } = pkg;
 const client = new DiscordClient({ intents: [GatewayIntentBits.Guilds] });
 
 client.on(Events.ClientReady, readyClient => {
