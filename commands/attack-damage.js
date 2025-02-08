@@ -30,7 +30,7 @@ const rollDamage = (diceSize) => {
 - Dice Roll (1d${diceSize}): ${diceRoll}
 - Strength Modifier: +${strengthMod}
 - Rage Bonus: +${rageBonus}\n
-**Total Damage**: ${totalDamage}`;
+**Total Damage: ${totalDamage}**`;
 
   return { damage: totalDamage, breakdown: damageBreakdown, rerollMessage };
 };
